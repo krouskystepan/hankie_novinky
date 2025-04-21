@@ -13,10 +13,7 @@ const Footer = () => {
       <footer className="border-t-2 border-custom-orange relative w-full mx-auto max-w-screen-xl p-6 text-center">
         <span className="text-lg tracking-widest">
           © rOK 69{' '}
-          <Link
-            href="https://flowbite.com/"
-            className="hover:underline font-bold"
-          >
+          <Link href="/" className="hover:underline font-bold">
             HaNK MOODy™
           </Link>
           . JoJO TAdY PrÁVA.
