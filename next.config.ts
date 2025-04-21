@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  images: {
+    domains: ['r2.fivemanage.com', 'upload.genk.cz'],
+  },
+}
 
-export default nextConfig;
+export default nextConfig
