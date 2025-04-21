@@ -23,9 +23,9 @@ const PostPage = async ({
   return (
     <Container bgColor="bg-custom-yellow flex-1">
       <main
-        className={`py-10 px-6 font-slackey text-custom-purple gap-12 ${
+        className={`py-10 px-6 font-slackey text-custom-purple gap-6 md:gap-12 ${
           post.images.some((img) => img && img.trim() !== '')
-            ? 'grid grid-cols-1 lg:grid-cols-2'
+            ? 'grid grid-cols-1 sm:grid-cols-2'
             : 'flex flex-col items-center justify-center text-center max-w-2xl mx-auto'
         }`}
       >
@@ -34,14 +34,18 @@ const PostPage = async ({
         )}
 
         <div className="w-full">
-          <div className="my-2 w-full flex gap-3 justify-center">
-            <Button asChild variant={'secondary'} className="w-5/6 sm:w-4/6">
+          <div className="my-2 w-full flex flex-col min-[400px]:flex-row gap-3 justify-center">
+            <Button
+              asChild
+              variant={'secondary'}
+              className="w-full min-[400px]:w-4/6"
+            >
               <Link href={'/'} className="text-lg font-semibold tracking-wider">
                 ZPatKy nA ZPaTeK
               </Link>
             </Button>
             <Badge
-              className={`border text-lg border-black ${getStyleByTag(
+              className={`border text-lg border-black w-full min-[400px]:w-fit ${getStyleByTag(
                 post.tag
               )}`}
             >

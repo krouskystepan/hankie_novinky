@@ -22,30 +22,16 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { TAGS } from '@/constants'
+import { adminFormSchema } from '@/constants/schema'
 import { getTagText } from '@/lib/utils'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 import { z } from 'zod'
-
-const adminFormSchema = z.object({
-  title: z
-    .string()
-    .min(2, 'Nadpis článku je příliš krátký')
-    .max(50, 'Nadpis článku je příliš dlouhý'),
-  description: z
-    .string()
-    .min(2, 'Popis článku je příliš krátký')
-    .max(400, 'Popis článku je příliš dlouhý'),
-  images: z.array(z.string()).max(3, 'Můžeš zadat maximálně 3 URL obrázků'),
-  tag: z.enum(TAGS, {
-    required_error: 'Vyber tag článku',
-    invalid_type_error: 'Vyber tag článku',
-  }),
-})
 
 const AdminCreatePage = () => {
   const form = useForm<z.infer<typeof adminFormSchema>>({
@@ -64,8 +50,10 @@ const AdminCreatePage = () => {
     try {
       await createPost(values)
       router.push('/')
+      toast.success('Příspěvek byl úspěšně vytvořen.')
     } catch (error) {
       console.error('Error creating post:', error)
+      toast.error('Chyba při vytváření příspěvku.')
     }
   }
 

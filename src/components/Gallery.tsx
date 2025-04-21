@@ -14,7 +14,7 @@ const Gallery = ({ images }: { images: string[] }) => {
   return (
     <div className="relative w-full max-w-4xl mx-auto mt-8 grid gap-4">
       {validImages.length === 1 && (
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl border-4 border-custom-green w-lg mx-auto">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-xl border-4 border-custom-green max-w-md w-auto lg:w-md xl:w-xl mx-auto">
           <img
             src={validImages[0]}
             alt="hAnkIE fOtKA"
