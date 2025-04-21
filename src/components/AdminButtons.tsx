@@ -15,10 +15,10 @@ const AdminButtons = ({ postId }: { postId: string }) => {
         </Link>
       </Button>
       <Button
-        onClick={() => {
+        onClick={async () => {
           const confirmDelete = window.confirm('ChcEŠ To FAKt Dát pRYč?')
           if (confirmDelete) {
-            deletePost(postId)
+            await deletePost(postId)
           }
         }}
         variant={'destructive'}
