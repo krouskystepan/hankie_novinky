@@ -8,12 +8,12 @@ import { deletePost } from '@/actions/post.action'
 
 const AdminButtons = ({ postId }: { postId: string }) => {
   return (
-    <div className="absolute -top-4 -right-4 flex gap-1 [&>button]:size-8 [&>button]:cursor-pointer">
-      <Link href={`/admin/${postId}`}>
-        <Button variant={'outline'} size={'icon'} aria-label="Edit post">
+    <div className="absolute -top-3 -right-3 flex gap-1 [&>*]:size-8">
+      <Button variant={'outline'} size={'icon'} aria-label="Edit post" asChild>
+        <Link href={`/admin/${postId}`} className="cursor-pointer">
           <Pen />
-        </Button>
-      </Link>
+        </Link>
+      </Button>
       <Button
         onClick={() => {
           const confirmDelete = window.confirm('ChcEŠ To FAKt Dát pRYč?')
@@ -24,6 +24,7 @@ const AdminButtons = ({ postId }: { postId: string }) => {
         variant={'destructive'}
         size={'icon'}
         aria-label="Delete post"
+        className="cursor-pointer"
       >
         <Trash />
       </Button>
