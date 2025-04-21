@@ -28,7 +28,6 @@ import { getTagText } from '@/lib/utils'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
 
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -39,10 +38,10 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
   const form = useForm<z.infer<typeof adminFormSchema>>({
     resolver: zodResolver(adminFormSchema),
     defaultValues: {
-      title: '',
-      description: '',
-      images: ['', '', ''],
-      tag: undefined,
+      title: post.title,
+      description: post.description,
+      images: post.images,
+      tag: post.tag,
     },
   })
 
@@ -50,6 +49,8 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
 
   async function onSubmit(values: z.infer<typeof adminFormSchema>) {
     try {
+      console.log(values)
+
       await updatePost(postId, values)
       router.push('/')
       toast.success('Příspěvek byl úspěšně vytvořen.')
@@ -58,22 +59,6 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
       toast.error('Chyba při vytváření příspěvku.')
     }
   }
-
-  useEffect(() => {
-    async function getPost() {
-      const parsedImages =
-        typeof post.images === 'string' ? JSON.parse(post.images) : post.images
-
-      form.reset({
-        title: post.title,
-        tag: post.tag,
-        description: post.description,
-        images: Array.from({ length: 3 }, (_, i) => parsedImages[i] || ''),
-      })
-    }
-
-    getPost()
-  }, [form, post, postId])
 
   return (
     <Container className="bg-custom-yellow flex-1 py-12">
