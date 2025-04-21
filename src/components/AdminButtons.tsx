@@ -10,7 +10,7 @@ const AdminButtons = ({ postId }: { postId: string }) => {
   return (
     <div className="absolute -top-4 -right-4 flex gap-1 [&>button]:size-8 [&>button]:cursor-pointer">
       <Link href={`/admin/${postId}`}>
-        <Button variant={'outline'} size={'icon'}>
+        <Button variant={'outline'} size={'icon'} aria-label="Edit post">
           <Pen />
         </Button>
       </Link>
@@ -23,6 +23,7 @@ const AdminButtons = ({ postId }: { postId: string }) => {
         }}
         variant={'destructive'}
         size={'icon'}
+        aria-label="Delete post"
       >
         <Trash />
       </Button>

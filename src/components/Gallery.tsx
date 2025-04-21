@@ -1,81 +1,72 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
+'use client'
+
+import React from 'react'
+
+const isValidImage = (src: string) =>
+  typeof src === 'string' && src.trim() !== '' && src.startsWith('http')
 
 const Gallery = ({ images }: { images: string[] }) => {
-  const count = images.length
+  const validImages = images.filter(isValidImage)
 
-  if (count === 1) {
-    return (
-      <div className="max-w-3xl mx-auto py-12 px-4">
-        <div className="aspect-[4/3] relative rounded-xl overflow-hidden shadow-lg">
-          <Image src={images[0]} alt="obrázek" fill className="object-cover" />
+  if (validImages.length === 0) return null
+
+  return (
+    <div className="relative w-full max-w-4xl mx-auto mt-8 grid gap-4">
+      {validImages.length === 1 && (
+        <div className="relative aspect-[4/3] overflow-hidden rounded-xl border-4 border-custom-green w-lg mx-auto">
+          <img
+            src={validImages[0]}
+            alt="hAnkIE fOtKA"
+            className="size-full object-cover"
+          />
         </div>
-      </div>
-    )
-  }
+      )}
 
-  if (count === 2) {
-    return (
-      <div className="max-w-5xl mx-auto py-12 px-4 flex gap-6 flex-col sm:flex-row">
-        {images.map((img, i) => (
-          <div
-            key={i}
-            className="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg"
-          >
-            <Image
-              src={img}
-              alt={`obrázek ${i + 1}`}
-              fill
-              className="object-cover"
+      {validImages.length === 2 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {validImages.map((img, i) => (
+            <div
+              key={i}
+              className="relative aspect-[4/3] overflow-hidden rounded-xl border-4 border-custom-pink"
+            >
+              <img
+                src={img}
+                alt={`HaNkIe Pic ${i + 1}`}
+                className="size-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {validImages.length === 3 && (
+        <div className="grid grid-cols-4 grid-rows-4 gap-4">
+          <div className="relative col-span-2 row-span-2 aspect-[4/3] -rotate-2 border-4 border-custom-red rounded-xl overflow-hidden">
+            <img
+              src={validImages[0]}
+              alt="img 1"
+              className="size-full object-cover"
             />
           </div>
-        ))}
-      </div>
-    )
-  }
-
-  if (count === 3) {
-    return (
-      <div className="relative max-w-4xl mx-auto px-6 py-16 space-y-12">
-        {/* Obrázek 1 */}
-        <div className="w-2/3 relative z-30">
-          <div className="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src={images[0]}
-              alt="obrázek 1"
-              fill
-              className="object-cover"
+          <div className="relative col-span-2 row-span-2 col-start-3 row-start-2 aspect-square rotate-3 border-4 border-custom-green rounded-xl overflow-hidden">
+            <img
+              src={validImages[1]}
+              alt="img 2"
+              className="size-full object-cover"
             />
           </div>
-        </div>
-
-        {/* Obrázek 2 */}
-        <div className="w-2/3 ml-auto -mt-16 relative z-20">
-          <div className="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src={images[1]}
-              alt="obrázek 2"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Obrázek 3 */}
-        <div className="w-2/3 -mt-12 relative z-10">
-          <div className="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src={images[2]}
-              alt="obrázek 3"
-              fill
-              className="object-cover"
+          <div className="relative col-span-2 row-span-2 aspect-[4/3] rotate-1 border-4 border-custom-purple rounded-xl overflow-hidden">
+            <img
+              src={validImages[2]}
+              alt="img 3"
+              className="size-full object-cover"
             />
           </div>
         </div>
-      </div>
-    )
-  }
-
-  return null
+      )}
+    </div>
+  )
 }
 
 export default Gallery

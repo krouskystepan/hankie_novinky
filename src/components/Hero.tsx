@@ -16,6 +16,7 @@ const Hero = () => {
             height={500}
             className="size-48"
             priority
+            quality={70}
           />
         ))}
       </div>

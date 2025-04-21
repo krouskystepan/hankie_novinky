@@ -13,6 +13,7 @@ import { TPost } from '@/constants/types'
 import { getStyleByTag, getTagText } from '@/lib/utils'
 import AdminButtons from './AdminButtons'
 import { getServerSession } from 'next-auth'
+import Link from 'next/link'
 
 const Post = async ({
   postId,
@@ -41,11 +42,14 @@ const Post = async ({
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button
+          asChild
           variant="ghost"
-          size={'lg'}
-          className={'cursor-pointer w-full text-xl border -tracking-wide'}
+          size="lg"
+          className="text-xl tracking-wide cursor-pointer w-full border text-center"
         >
-          {'====> taDY ViC <===='}
+          <Link href={`/prispevek/${postId}`} className="text-center">
+            {'====> taDY ViC <===='}
+          </Link>
         </Button>
       </CardFooter>
     </Card>

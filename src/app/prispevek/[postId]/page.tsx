@@ -1,0 +1,71 @@
+import { getPostById } from '@/actions/post.action'
+import Container from '@/components/Container'
+import Gallery from '@/components/Gallery'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { getStyleByTag, getTagText } from '@/lib/utils'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+
+const PostPage = async ({
+  params,
+}: {
+  params: Promise<{
+    postId: string
+  }>
+}) => {
+  const { postId } = await params
+
+  const post = await getPostById(postId)
+
+  if (!post) notFound()
+
+  return (
+    <Container bgColor="bg-custom-yellow flex-1">
+      <main
+        className={`py-10 px-6 font-slackey text-custom-purple gap-12 ${
+          post.images.some((img) => img && img.trim() !== '')
+            ? 'grid grid-cols-1 lg:grid-cols-2'
+            : 'flex flex-col items-center justify-center text-center max-w-2xl mx-auto'
+        }`}
+      >
+        {post.images.some((img) => img && img.trim() !== '') && (
+          <Gallery images={post.images} />
+        )}
+
+        <div className="w-full">
+          <div className="my-2 w-full flex gap-3 justify-center">
+            <Button asChild variant={'secondary'} className="w-5/6 sm:w-4/6">
+              <Link href={'/'} className="text-lg font-semibold tracking-wider">
+                ZPatKy nA ZPaTeK
+              </Link>
+            </Button>
+            <Badge
+              className={`border text-lg border-black ${getStyleByTag(
+                post.tag
+              )}`}
+            >
+              {getTagText(post.tag)}
+            </Badge>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-wider text-custom-red mt-4 mb-6">
+            {post.title}
+          </h1>
+
+          <p className="text-xl tracking-wider leading-relaxed text-custom-green">
+            {post.description}
+          </p>
+
+          {!post.images.some((img) => img && img.trim() !== '') && (
+            <p className="mt-6 text-custom-blue text-3xl">
+              🧸 hAnKiE neMá žáDnou FoTo 😢
+            </p>
+          )}
+        </div>
+      </main>
+    </Container>
+  )
+}
+
+export default PostPage
