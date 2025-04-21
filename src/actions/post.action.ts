@@ -77,18 +77,18 @@ export async function getPosts(): Promise<TPost[]> {
   }
 }
 
-// export async function getPostsByTag(tag: string): Promise<TPost[]> {
-//   try {
-//     await connectToDatabase()
+export async function getPostsByTag(tag: string): Promise<TPost[]> {
+  try {
+    await connectToDatabase()
 
-//     const posts = await Post.find({ tags: tag }).sort({ createdAt: -1 })
+    const posts = await Post.find({ tag: tag }).sort({ createdAt: -1 })
 
-//     return posts
-//   } catch (error) {
-//     console.error('Error fetching posts by tag:', error)
-//     return []
-//   }
-// }
+    return posts
+  } catch (error) {
+    console.error('Error fetching posts by tag:', error)
+    return []
+  }
+}
 
 export async function getPostById(postId: string): Promise<TPost | null> {
   try {

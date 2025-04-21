@@ -5,7 +5,7 @@ import SayHi from './SayHi'
 
 const Hero = () => {
   return (
-    <Container bgColor="bg-custom-yellow py-4">
+    <Container className="bg-custom-yellow py-4">
       <div className="flex flex-col sm:flex-row justify-evenly items-center gap-5">
         {HERO_GIFS.map((gif, index) => (
           <Image

@@ -1,6 +1,7 @@
-import { getPostById } from '@/actions/post.action'
+import { getPostById, getPostsByTag } from '@/actions/post.action'
 import Container from '@/components/Container'
 import Gallery from '@/components/Gallery'
+import Post from '@/components/Post'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { getStyleByTag, getTagText } from '@/lib/utils'
@@ -20,8 +21,17 @@ const PostPage = async ({
 
   if (!post) notFound()
 
+  const otherPosts = await getPostsByTag(post.tag)
+
+  const filteredOtherPosts = otherPosts.filter(
+    (otherPost) => otherPost.postId !== post.postId
+  )
+
   return (
-    <Container bgColor="bg-custom-yellow flex-1">
+    <Container
+      className="bg-custom-yellow flex flex-1 py-8"
+      innerClassName="flex flex-1 flex-col justify-between"
+    >
       <main
         className={`py-10 px-6 font-slackey text-custom-purple gap-6 md:gap-12 ${
           post.images.some((img) => img && img.trim() !== '')
@@ -68,6 +78,24 @@ const PostPage = async ({
           )}
         </div>
       </main>
+      {filteredOtherPosts.length > 0 && (
+        <section className="border-t-2 border-t-custom-purple">
+          <h2 className="col-span-full text-center text-xl md:text-4xl font-bold text-custom-purple mb-8 mt-4">
+            🧵 Další hAnKiEho zÁpiSky...
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {filteredOtherPosts.slice(0, 4).map((post) => (
+              <Post
+                key={post.postId}
+                postId={post.postId}
+                title={post.title}
+                description={post.description}
+                tag={post.tag}
+              />
+            ))}
+          </div>
+        </section>
+      )}
     </Container>
   )
 }

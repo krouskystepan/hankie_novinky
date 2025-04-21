@@ -8,7 +8,7 @@ const Posts = async () => {
   const posts = await getPosts()
 
   return (
-    <Container bgColor="bg-custom-purple py-10 px-4">
+    <Container className="bg-custom-purple py-10 px-4">
       <h2 className="text-3xl md:text-5xl text-center mb-6 tracking-widest">
         <span className="!font-slackey font-bold bg-gradient-to-br from-custom-green to-custom-green/55 bg-clip-text text-transparent">
           hAnKIeHO pRIsPEVkY

@@ -58,7 +58,7 @@ const AdminCreatePage = () => {
   }
 
   return (
-    <Container bgColor="bg-custom-yellow flex-1 py-12">
+    <Container className="bg-custom-yellow flex-1 py-12">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

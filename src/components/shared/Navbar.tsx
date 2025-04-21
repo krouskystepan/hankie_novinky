@@ -16,7 +16,7 @@ import Link from 'next/link'
 
 const Navbar = () => {
   return (
-    <Container bgColor="bg-custom-pink">
+    <Container className="bg-custom-pink">
       <nav className="py-4 flex flex-col md:flex-row justify-around items-center gap-2">
         <Link
           href={'/'}

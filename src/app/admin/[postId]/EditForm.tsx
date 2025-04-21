@@ -76,7 +76,7 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
   }, [form, post, postId])
 
   return (
-    <Container bgColor="bg-custom-yellow flex-1 py-12">
+    <Container className="bg-custom-yellow flex-1 py-12">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
