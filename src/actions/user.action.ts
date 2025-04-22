@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt'
 import { revalidatePath } from 'next/cache'
 import { connectToDatabase } from '@/lib/utils'
 import User from '@/models/User'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { authOptions } from '@/lib/authOptions'
 
 export async function getUser({ username }: { username: string }) {
   try {

@@ -14,7 +14,7 @@ import { getStyleByTag, getTagText } from '@/lib/utils'
 import AdminButtons from './AdminButtons'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { authOptions } from '@/lib/authOptions'
 
 const Post = async ({
   postId,

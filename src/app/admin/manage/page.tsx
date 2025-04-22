@@ -1,15 +1,15 @@
 import { getAllUsersUsernames } from '@/actions/user.action'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import AddUser from '@/components/AddUser'
 import Container from '@/components/Container'
 import DeleteUser from '@/components/DeleteUser'
+import { authOptions } from '@/lib/authOptions'
 import { getServerSession } from 'next-auth'
 import { notFound } from 'next/navigation'
 
 const AdminManagePage = async () => {
   const session = await getServerSession(authOptions)
 
-  // if (session?.user.role !== 'admin') return notFound()
+  if (session?.user.role !== 'admin') return notFound()
 
   const users = await getAllUsersUsernames()
 

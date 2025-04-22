@@ -1,7 +1,7 @@
 'use server'
 
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { TPost } from '@/constants/types'
+import { authOptions } from '@/lib/authOptions'
 import { connectToDatabase } from '@/lib/utils'
 import Post from '@/models/Post'
 import { getServerSession } from 'next-auth'
