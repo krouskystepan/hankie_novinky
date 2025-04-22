@@ -23,11 +23,8 @@ const AdminButtons = ({ postId }: { postId: string }) => {
               await deletePost(postId)
               toast.success('Příspěvek byl úspěšně smazán.')
             } catch (error) {
-              if (error instanceof Error) {
-                toast.error(error.message)
-              } else {
-                toast.error('An unknown error occurred.')
-              }
+              console.error('Error deleting post:', error)
+              toast.error('Chyba při mazání příspěvku.')
             }
           }
         }}

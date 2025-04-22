@@ -44,11 +44,7 @@ const DeleteUser = ({ users }: DeleteUserProps) => {
       toast.success('Kámoš byl úspěšně odebrán.')
     } catch (error) {
       console.error('Error deleting user:', error)
-      if (error instanceof Error) {
-        toast.error(error.message)
-      } else {
-        toast.error('An unknown error occurred.')
-      }
+      toast.error('Chyba při odebírání kámoše.')
     }
   }
 

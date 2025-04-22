@@ -40,11 +40,7 @@ const AddUser = () => {
       toast.success('Kámoš byl úspěšně vytvořen.')
     } catch (error) {
       console.error('Error creating user:', error)
-      if (error instanceof Error) {
-        toast.error(error.message)
-      } else {
-        toast.error('Chyba při vytváření kámoše.')
-      }
+      toast.error('Chyba při vytváření kámoše.')
     }
   }
 

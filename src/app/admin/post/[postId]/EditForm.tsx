@@ -54,11 +54,7 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
       toast.success('Příspěvek byl úspěšně upraven.')
     } catch (error) {
       console.error('Error creating post:', error)
-      if (error instanceof Error) {
-        toast.error(error.message)
-      } else {
-        toast.error('Chyba při vytváření příspěvku.')
-      }
+      toast.error('Chyba při vytváření příspěvku.')
     }
   }
 
