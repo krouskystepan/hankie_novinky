@@ -1,7 +1,6 @@
 import React from 'react'
 import Container from './Container'
 import { getPosts } from '@/actions/post.action'
-import { getStyleByTag } from '@/lib/utils'
 import Post from './Post'
 
 const Posts = async () => {
@@ -17,22 +16,16 @@ const Posts = async () => {
       </h2>
 
       <div className="grid justify-center grid-flow-row-dense sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map((post, i) => (
-          <div
-            key={i}
-            className={`w-[280px] min-[380px]:w-sm sm:mx-0 md:w-full p-4 rounded-2xl ${getStyleByTag(
-              post.tag
-            )}`}
-          >
-            <Post
-              postId={post.postId}
-              title={post.title}
-              description={post.description}
-              tag={post.tag}
-              createdBy={post.createdBy}
-              createdAt={post.createdAt}
-            />
-          </div>
+        {posts.map((post) => (
+          <Post
+            key={post.postId}
+            postId={post.postId}
+            title={post.title}
+            description={post.description}
+            tag={post.tag}
+            createdBy={post.createdBy}
+            createdAt={post.createdAt}
+          />
         ))}
         {posts.length === 0 && (
           <div className="col-span-3 text-center py-4">
