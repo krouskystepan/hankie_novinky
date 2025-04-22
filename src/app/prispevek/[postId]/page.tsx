@@ -83,17 +83,17 @@ const PostPage = async ({
           </div>
         </section>
         {post.video && (
-          <div className="flex justify-center mb-8">
-            <iframe
-              width="854"
-              height="480"
-              className="rounded-xl border-4 border-custom-red"
-              src={`https://www.youtube.com/embed/${post.video}`}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+          <div className="max-w-3xl mx-auto mb-8 mt-4 md:mt-0">
+            <div className="relative overflow-hidden pt-[56.25%]">
+              <iframe
+                className="rounded-xl border-4 border-custom-red absolute inset-0 size-full"
+                src={`https://www.youtube.com/embed/${post.video}`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
           </div>
         )}
       </main>
