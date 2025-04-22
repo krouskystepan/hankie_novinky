@@ -179,7 +179,7 @@ const AdminCreatePage = () => {
             name="video"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Video (nepovinné)</FormLabel>
+                <FormLabel>YTB Video (nepovinné)</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="ID videa (YouTube)"
