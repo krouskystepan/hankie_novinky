@@ -83,7 +83,7 @@ const PostPage = async ({
           </div>
         </section>
         {post.video && (
-          <div className="max-w-3xl mx-auto mb-8 mt-4 md:mt-0">
+          <div className="max-w-xl mx-auto mb-8 mt-4">
             <div className="relative overflow-hidden pt-[56.25%]">
               <iframe
                 className="rounded-xl border-4 border-custom-red absolute inset-0 size-full"
