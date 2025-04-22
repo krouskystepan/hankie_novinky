@@ -40,6 +40,7 @@ const AdminCreatePage = () => {
       title: '',
       description: '',
       images: ['', '', ''],
+      video: '',
       tag: undefined,
     },
   })
@@ -146,7 +147,6 @@ const AdminCreatePage = () => {
             render={() => (
               <FormItem>
                 <FormLabel>Obrázky (nepovinné, max 3)</FormLabel>
-                <FormDescription>Můžeš přidat až 3 URL obrázků</FormDescription>
                 <div className="space-y-2">
                   {[0, 1, 2].map((index) => (
                     <FormField
@@ -167,7 +167,28 @@ const AdminCreatePage = () => {
                       )}
                     />
                   ))}
-                </div>
+                </div>{' '}
+                <FormDescription>
+                  Můžeš přidat až 3 URL obrázků.
+                </FormDescription>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="video"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Video (nepovinné)</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="ID videa (YouTube)"
+                    className="bg-muted border-transparent shadow-none"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>Zadejte ID videa.</FormDescription>
+                <FormMessage />
               </FormItem>
             )}
           />

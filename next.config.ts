@@ -2,7 +2,20 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['r2.fivemanage.com', 'upload.genk.cz'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'r2.fivemanage.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.genk.cz',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 }
 

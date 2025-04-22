@@ -42,6 +42,7 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
       description: post.description,
       images: post.images,
       tag: post.tag,
+      video: post.video,
     },
   })
 
@@ -171,6 +172,24 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
                     />
                   ))}
                 </div>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="video"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Video (nepovinné)</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="ID videa (YouTube)"
+                    className="bg-muted border-transparent shadow-none"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>Zadejte ID videa.</FormDescription>
+                <FormMessage />
               </FormItem>
             )}
           />

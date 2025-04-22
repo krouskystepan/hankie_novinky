@@ -32,51 +32,70 @@ const PostPage = async ({
       className="bg-custom-yellow flex flex-1 py-8"
       innerClassName="flex flex-1 flex-col justify-between"
     >
-      <main
-        className={`py-10 px-6 font-slackey text-custom-purple gap-6 md:gap-12 ${
-          post.images.some((img) => img && img.trim() !== '')
-            ? 'grid grid-cols-1 sm:grid-cols-2'
-            : 'flex flex-col items-center justify-center text-center max-w-2xl mx-auto'
-        }`}
-      >
-        {post.images.some((img) => img && img.trim() !== '') && (
-          <Gallery images={post.images} />
-        )}
-
-        <div className="w-full">
-          <div className="my-2 w-full flex flex-col min-[400px]:flex-row gap-3 justify-center">
-            <Button
-              asChild
-              variant={'secondary'}
-              className="w-full min-[400px]:w-4/6"
-            >
-              <Link href={'/'} className="text-lg font-semibold tracking-wider">
-                ZPatKy nA ZPaTeK
-              </Link>
-            </Button>
-            <Badge
-              className={`border text-lg border-black w-full min-[400px]:w-fit ${getStyleByTag(
-                post.tag
-              )}`}
-            >
-              {getTagText(post.tag)}
-            </Badge>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-wider text-custom-red mt-4 mb-6">
-            {post.title}
-          </h1>
-
-          <p className="text-xl tracking-wider leading-relaxed text-custom-green">
-            {post.description}
-          </p>
-
-          {!post.images.some((img) => img && img.trim() !== '') && (
-            <p className="mt-6 text-custom-blue text-3xl">
-              🧸 hAnKiE neMá žáDnou FoTo 😢
-            </p>
+      <main className="spay-ce-y-8">
+        <section
+          className={`px-6 font-slackey text-custom-purple gap-6 ${
+            post.images.some((img) => img && img.trim() !== '')
+              ? 'grid grid-cols-1 sm:grid-cols-2'
+              : 'flex flex-col items-center justify-center text-center max-w-2xl mx-auto'
+          }`}
+        >
+          {post.images.some((img) => img && img.trim() !== '') && (
+            <Gallery images={post.images} />
           )}
-        </div>
+
+          <div className="w-full">
+            <div className="my-2 w-full flex flex-col min-[400px]:flex-row gap-3 justify-center">
+              <Button
+                asChild
+                variant={'secondary'}
+                className="w-full min-[400px]:w-4/6"
+              >
+                <Link
+                  href={'/'}
+                  className="text-lg font-semibold tracking-wider"
+                >
+                  ZPatKy nA ZPaTeK
+                </Link>
+              </Button>
+              <Badge
+                className={`border text-lg border-black w-full min-[400px]:w-fit ${getStyleByTag(
+                  post.tag
+                )}`}
+              >
+                {getTagText(post.tag)}
+              </Badge>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-wider text-custom-red mt-4 mb-6">
+              {post.title}
+            </h1>
+
+            <p className="text-xl tracking-wider leading-relaxed text-custom-green">
+              {post.description}
+            </p>
+
+            {!post.images.some((img) => img && img.trim() !== '') && (
+              <p className="mt-6 text-custom-blue text-3xl">
+                🧸 hAnKiE neMá žáDnou FoTo 😢
+              </p>
+            )}
+          </div>
+        </section>
+        {post.video && (
+          <div className="flex justify-center mb-8">
+            <iframe
+              width="854"
+              height="480"
+              className="rounded-xl border-4 border-custom-red"
+              src={`https://www.youtube.com/embed/${post.video}`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        )}
       </main>
       {filteredOtherPosts.length > 0 && (
         <section className="border-t-2 border-t-custom-purple">

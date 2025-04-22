@@ -11,6 +11,7 @@ export const postFormSchema = z.object({
     .min(2, 'Popis článku je příliš krátký')
     .max(400, 'Popis článku je příliš dlouhý'),
   images: z.array(z.string()).max(3, 'Můžeš zadat maximálně 3 URL obrázků'),
+  video: z.string().optional(),
   tag: z.enum(TAGS, {
     required_error: 'Vyber tag článku',
     invalid_type_error: 'Vyber tag článku',

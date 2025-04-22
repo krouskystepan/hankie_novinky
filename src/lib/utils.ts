@@ -18,6 +18,9 @@ export const connectToDatabase = async () => {
   }
 }
 
+export const isValidUrl = (src: string) =>
+  typeof src === 'string' && src.trim() !== '' && src.startsWith('http')
+
 export const getStyleByTag = (tag: TTag) => {
   switch (tag) {
     case 'zabava':

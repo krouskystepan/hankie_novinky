@@ -1,13 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
+import { isValidUrl } from '@/lib/utils'
 import React from 'react'
 
-const isValidImage = (src: string) =>
-  typeof src === 'string' && src.trim() !== '' && src.startsWith('http')
-
 const Gallery = ({ images }: { images: string[] }) => {
-  const validImages = images.filter(isValidImage)
+  const validImages = images.filter(isValidUrl)
 
   if (validImages.length === 0) return null
 

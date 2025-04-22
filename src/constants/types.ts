@@ -13,5 +13,6 @@ export type TPost = {
   createdBy: string
   createdAt: string
   images: string[]
+  video?: string
   tag: TTag
 }

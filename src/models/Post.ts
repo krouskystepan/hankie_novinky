@@ -5,6 +5,7 @@ export type Post = Document & {
   title: string
   description: string
   images: string[]
+  video?: string
   tag: string
   createdBy: string
 }
@@ -27,6 +28,10 @@ const PostSchema = new Schema<Post>(
     images: {
       type: [String],
       default: [],
+    },
+    video: {
+      type: String,
+      default: null,
     },
     tag: {
       type: String,
