@@ -14,7 +14,7 @@ const AdminManagePage = async () => {
   const users = await getAllUsersUsernames()
 
   const restUsers = users?.filter(
-    (user) => user.username !== session?.user.name
+    (user) => user.username !== session?.user.name && user.username !== 'admin'
   )
 
   return (
