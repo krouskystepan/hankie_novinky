@@ -83,7 +83,11 @@ const DeleteUser = ({ users }: DeleteUserProps) => {
             </FormItem>
           )}
         />
-        <Button type="submit" variant={'outline'} className="w-xs">
+        <Button
+          type="submit"
+          variant={'outline'}
+          className="w-xs cursor-pointer font-bold tracking-wider"
+        >
           ahOj KamARAdE
         </Button>
       </form>
