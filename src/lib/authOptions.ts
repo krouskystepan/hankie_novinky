@@ -1,8 +1,8 @@
 import { Session } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcrypt'
-import { connectToDatabase } from '@/lib/utils'
 import User from '@/models/User'
+import { connectToDatabase } from './utils'
 
 export const authOptions = {
   providers: [
@@ -15,6 +15,7 @@ export const authOptions = {
       async authorize(credentials) {
         if (!credentials?.username || !credentials?.password) return null
 
+        await connectToDatabase()
         const user = await User.findOne({
           username: credentials.username,
         })
@@ -34,7 +35,7 @@ export const authOptions = {
     async session({ session }: { session: Session }) {
       if (!session?.user?.name) return session
 
-      connectToDatabase()
+      await connectToDatabase()
       const user = await User.findOne({
         username: session.user.name,
       })
