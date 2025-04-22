@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { TAGS } from '.'
 
-export const adminFormSchema = z.object({
+export const postFormSchema = z.object({
   title: z
     .string()
     .min(2, 'Nadpis článku je příliš krátký')
@@ -15,4 +15,16 @@ export const adminFormSchema = z.object({
     required_error: 'Vyber tag článku',
     invalid_type_error: 'Vyber tag článku',
   }),
+})
+
+export const adminFormSchema = z.object({
+  username: z
+    .string()
+    .min(2, 'Uživatelské jméno je příliš krátké')
+    .max(10, 'Uživatelské jméno je příliš dlouhé'),
+  password: z.string().min(2, 'Heslo je příliš krátké'),
+})
+
+export const deleteAdminFormSchema = z.object({
+  username: z.string(),
 })

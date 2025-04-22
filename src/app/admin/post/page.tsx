@@ -1,6 +1,6 @@
 'use client'
 
-import { updatePost } from '@/actions/post.action'
+import { createPost } from '@/actions/post.action'
 import Container from '@/components/Container'
 import { Button } from '@/components/ui/button'
 import {
@@ -22,8 +22,7 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { TAGS } from '@/constants'
-import { adminFormSchema } from '@/constants/schema'
-import { TPost } from '@/constants/types'
+import { postFormSchema } from '@/constants/schema'
 import { getTagText } from '@/lib/utils'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -34,24 +33,22 @@ import { toast } from 'sonner'
 
 import { z } from 'zod'
 
-const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
-  const form = useForm<z.infer<typeof adminFormSchema>>({
-    resolver: zodResolver(adminFormSchema),
+const AdminCreatePage = () => {
+  const form = useForm<z.infer<typeof postFormSchema>>({
+    resolver: zodResolver(postFormSchema),
     defaultValues: {
-      title: post.title,
-      description: post.description,
-      images: post.images,
-      tag: post.tag,
+      title: '',
+      description: '',
+      images: ['', '', ''],
+      tag: undefined,
     },
   })
 
   const router = useRouter()
 
-  async function onSubmit(values: z.infer<typeof adminFormSchema>) {
+  async function onSubmit(values: z.infer<typeof postFormSchema>) {
     try {
-      console.log(values)
-
-      await updatePost(postId, values)
+      await createPost(values)
       router.push('/')
       toast.success('Příspěvek byl úspěšně vytvořen.')
     } catch (error) {
@@ -97,13 +94,11 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
                   <FormLabel>Tag</FormLabel>
                   <Select
                     onValueChange={field.onChange}
-                    value={field.value ?? ''}
+                    defaultValue={field.value}
                   >
-                    <FormControl>
-                      <SelectTrigger className="bg-muted border-transparent shadow-none w-full tracking-widest">
-                        <SelectValue placeholder="Vyberte tag článku" />
-                      </SelectTrigger>
-                    </FormControl>
+                    <SelectTrigger className="bg-muted border-transparent shadow-none w-full tracking-widest">
+                      <SelectValue placeholder="tADY TaG" />
+                    </SelectTrigger>
                     <SelectContent>
                       {TAGS.map((tag) => (
                         <SelectItem
@@ -117,7 +112,7 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    Vyber tag článku. Můžeš vybrat pouze jeden tag.
+                    You can manage email addresses in your
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -183,7 +178,7 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
             disabled={form.formState.isSubmitting}
             className="cursor-pointer w-full font-bold tracking-wider"
           >
-            CAu cAU páPÁ EdIT
+            CAu cAU páPÁ
           </Button>
         </form>
       </Form>
@@ -191,4 +186,4 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
   )
 }
 
-export default EditForm
+export default AdminCreatePage

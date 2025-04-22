@@ -54,8 +54,17 @@ const Footer = () => {
             </li>
           )}
         </ul>
+        {session?.user?.name && (
+          <>
+            <span className="mx-auto">
+              JsI PRihlAsEn jAko UziVatEL: {session?.user?.name}
+            </span>
+            <br />
+          </>
+        )}
+
         <span className="mx-auto">
-          Vytvořil:{' '}
+          Web Vytvořil:{' '}
           <Link
             href="https://www.krouskystepan.com"
             target="_blank"

@@ -1,13 +1,14 @@
 import { Schema, model, Document, models } from 'mongoose'
 
-export type Admin = Document & {
-  adminId: string
+export type User = Document & {
+  userId: string
   username: string
   password: string
+  role: string
 }
 
-const Admin = new Schema<Admin>({
-  adminId: {
+const User = new Schema<User>({
+  userId: {
     type: String,
     required: true,
     unique: true,
@@ -21,6 +22,12 @@ const Admin = new Schema<Admin>({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    required: true,
+    enum: ['admin', 'user'],
+    default: 'user',
+  },
 })
 
-export default models.Admin || model<Admin>('Admin', Admin)
+export default models.User || model<User>('User', User)

@@ -6,6 +6,7 @@ export type Post = Document & {
   description: string
   images: string[]
   tag: string
+  createdBy: string
 }
 
 const PostSchema = new Schema<Post>(
@@ -28,6 +29,10 @@ const PostSchema = new Schema<Post>(
       default: [],
     },
     tag: {
+      type: String,
+      required: true,
+    },
+    createdBy: {
       type: String,
       required: true,
     },

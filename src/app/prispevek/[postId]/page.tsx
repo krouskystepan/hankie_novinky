@@ -91,6 +91,8 @@ const PostPage = async ({
                 title={post.title}
                 description={post.description}
                 tag={post.tag}
+                createdBy={post.createdBy}
+                createdAt={post.createdAt}
               />
             ))}
           </div>

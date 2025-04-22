@@ -16,14 +16,21 @@ const Posts = async () => {
         ✨📰🧠
       </h2>
 
-      <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid justify-center grid-flow-row-dense sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post, i) => (
-          <div key={i} className={`p-4 rounded-2xl ${getStyleByTag(post.tag)}`}>
+          <div
+            key={i}
+            className={`w-[280px] min-[380px]:w-sm sm:mx-0 md:w-full p-4 rounded-2xl ${getStyleByTag(
+              post.tag
+            )}`}
+          >
             <Post
               postId={post.postId}
               title={post.title}
               description={post.description}
               tag={post.tag}
+              createdBy={post.createdBy}
+              createdAt={post.createdAt}
             />
           </div>
         ))}

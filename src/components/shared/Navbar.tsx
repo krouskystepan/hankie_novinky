@@ -13,8 +13,12 @@ import {
 
 import Convertor from '../Convertor'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { User } from 'lucide-react'
 
 const Navbar = () => {
+  const { data: session } = useSession()
+
   return (
     <Container className="bg-custom-pink">
       <nav className="py-4 flex flex-col md:flex-row justify-around items-center gap-2">
@@ -26,7 +30,7 @@ const Navbar = () => {
         </Link>
         <div className="flex gap-2">
           <Link
-            href={'/admin'}
+            href={'/admin/post'}
             className={buttonVariants({
               variant: 'ghost',
               className:
@@ -60,6 +64,18 @@ const Navbar = () => {
               <Convertor />
             </DialogContent>
           </Dialog>
+          {session?.user.role === 'admin' && (
+            <Button
+              asChild
+              variant="ghost"
+              size={'icon'}
+              className="bg-custom-purple hover:bg-custom-yellow border border-custom-orange"
+            >
+              <Link href={'/admin/manage'}>
+                <User />
+              </Link>
+            </Button>
+          )}
         </div>
       </nav>
     </Container>
