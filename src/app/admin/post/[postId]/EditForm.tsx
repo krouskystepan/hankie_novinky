@@ -66,12 +66,12 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-4 max-w-2xl mx-auto font-semibold tracking-wider"
         >
-          <div className="grid grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
-                <FormItem className="col-span-4">
+                <FormItem className="col-span-2 md:col-span-4">
                   <FormLabel>Nadpis článku</FormLabel>
                   <FormControl>
                     <Input
@@ -188,7 +188,10 @@ const EditForm = ({ postId, post }: { postId: string; post: TPost }) => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Zadejte ID videa.</FormDescription>
+                <FormDescription className="!font-bold">
+                  Zadejte ID videa. - youtube.com/watch?v=
+                  <span className="text-black text-base">Y10PRnL7C_U</span>
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}

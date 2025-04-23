@@ -23,7 +23,7 @@ export const adminFormSchema = z.object({
     .string()
     .min(2, 'Uživatelské jméno je příliš krátké')
     .max(10, 'Uživatelské jméno je příliš dlouhé'),
-  password: z.string().min(2, 'Heslo je příliš krátké'),
+  password: z.string().min(6, 'Heslo je příliš krátké'),
 })
 
 export const deleteAdminFormSchema = z.object({
