@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ferrucc-io/emoji-picker": "^0.0.44",
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-dialog": "^1.1.10",
     "@radix-ui/react-label": "^2.1.4",
@@ -20,7 +21,6 @@
     "clsx": "^2.1.1",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
-    "emoji-picker-react": "^4.12.2",
     "lucide-react": "^0.501.0",
     "mongodb": "^6.15.0",
     "mongoose": "^8.13.2",

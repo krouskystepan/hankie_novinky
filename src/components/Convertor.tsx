@@ -5,8 +5,8 @@ import { Button } from './ui/button'
 import { useId, useState } from 'react'
 import { Textarea } from './ui/textarea'
 import { randomizeCaps } from '@/lib/utils'
-import EmojiPicker from 'emoji-picker-react'
-import { Smile } from 'lucide-react'
+import { Smile, X } from 'lucide-react'
+import { EmojiPicker } from '@ferrucc-io/emoji-picker'
 
 const Convertor = () => {
   const id = useId()
@@ -44,23 +44,37 @@ const Convertor = () => {
           <Smile />
         </Button>
 
-        <EmojiPicker
-          onEmojiClick={(emojiObj) => {
-            setText((prevInput) => prevInput + emojiObj.emoji)
-            setRandomizedText((prevInput) => prevInput + emojiObj.emoji)
-            setShowPicker(false)
-          }}
-          open={showPicker}
-          width={'100%'}
-          height={375}
-          lazyLoadEmojis={true}
-          style={{
-            position: 'absolute',
-            top: '100%',
-            right: '0',
-            zIndex: 9999,
-          }}
-        />
+        {showPicker && (
+          <EmojiPicker
+            className="absolute top-full right-0 z-50 w-full border-neutral-400 shadow-none"
+            emojisPerRow={9}
+            emojiSize={36}
+            onEmojiSelect={(emoji) => {
+              setText((prev) => prev + emoji)
+              setRandomizedText((prev) => randomizeCaps(prev + emoji))
+              setShowPicker(false)
+            }}
+          >
+            <EmojiPicker.Header className="border-b border-neutral-400">
+              <EmojiPicker.Input
+                placeholder="VyHleDEJ eMoJi"
+                className="h-8 border border-custom-pink rounded-md text-base my-2.5 bg-white px-2 focus:border-custom-red"
+                hideIcon
+              />
+              <Button
+                variant={'outline'}
+                size={'icon'}
+                className="h-8 cursor-pointer border border-custom-pink hover:bg-custom-pink"
+                onClick={() => setShowPicker(false)}
+              >
+                <X />
+              </Button>
+            </EmojiPicker.Header>
+            <EmojiPicker.Group>
+              <EmojiPicker.List hideStickyHeader containerHeight={280} />
+            </EmojiPicker.Group>
+          </EmojiPicker>
+        )}
       </div>
 
       <div className="space-y-2">
