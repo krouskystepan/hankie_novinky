@@ -84,7 +84,7 @@ const DeleteUser = ({ users }: DeleteUserProps) => {
           variant={'outline'}
           className="w-xs cursor-pointer font-bold tracking-wider"
         >
-          nSCHleDoVN kÁmO
+          naSCHleDoVN kÁmO
         </Button>
       </form>
     </Form>
