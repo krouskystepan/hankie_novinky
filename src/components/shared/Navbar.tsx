@@ -13,12 +13,10 @@ import {
 
 import Convertor from '../Convertor'
 import Link from 'next/link'
-import { useSession } from 'next-auth/react'
 import { User } from 'lucide-react'
+import { Session } from 'next-auth'
 
-const Navbar = () => {
-  const { data: session } = useSession()
-
+const Navbar = ({ session }: { session: Session | null }) => {
   return (
     <Container className="bg-custom-pink">
       <nav className="py-4 flex flex-col md:flex-row justify-around items-center gap-2">

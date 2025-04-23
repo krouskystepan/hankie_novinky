@@ -3,11 +3,10 @@
 import Link from 'next/link'
 import React from 'react'
 import Container from '../Container'
-import { signOut, useSession } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
+import { Session } from 'next-auth'
 
-const Footer = () => {
-  const { data: session } = useSession()
-
+const Footer = ({ session }: { session: Session | null }) => {
   return (
     <Container>
       <footer className="border-t-2 border-custom-orange relative w-full mx-auto max-w-screen-xl p-6 text-center">
