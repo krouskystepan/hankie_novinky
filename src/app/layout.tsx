@@ -21,7 +21,7 @@ const slackey = Slackey({
 })
 
 export const metadata: Metadata = {
-  title: 'AhoJ jA jsem HanKie',
+  title: 'H-News',
   description: '',
 }
 

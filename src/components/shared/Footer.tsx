@@ -13,7 +13,7 @@ const Footer = ({ session }: { session: Session | null }) => {
         <span className="text-lg tracking-widest">
           © rOK 69{' '}
           <Link href="/" className="hover:underline font-bold">
-            HaNK MOODy™
+            H-News™
           </Link>
           . JoJO TAdY PrÁVA.
         </span>
@@ -39,7 +39,7 @@ const Footer = ({ session }: { session: Session | null }) => {
               href="/"
               className="text-custom-yellow hover:underline me-4 md:me-6"
             >
-              jA JsEM HanKIE
+              mY JsME H-NEwS
             </Link>
           </li>
           {session?.user?.name && (

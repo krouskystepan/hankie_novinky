@@ -24,7 +24,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
           href={'/'}
           className="text-center text-custom-green duration-200 transition-colors hover:text-custom-yellow font-bold text-2xl md:text-3xl tracking-wider"
         >
-          {'aHOj jÁ JsEM HanKIe 💖💥 :---)'}
+          {'H-News 💖💥 :---)'}
         </Link>
         <div className="flex gap-2">
           <Link

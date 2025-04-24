@@ -77,7 +77,7 @@ const PostPage = async ({
 
             {!post.images.some((img) => img && img.trim() !== '') && (
               <p className="mt-6 text-custom-blue text-3xl">
-                🧸 hAnKiE neMá žáDnou FoTo 😢
+                🧸 {post.createdBy} neMá žáDnou FoTo 😢
               </p>
             )}
           </div>
@@ -100,7 +100,7 @@ const PostPage = async ({
       {filteredOtherPosts.length > 0 && (
         <section className="border-t-2 border-t-custom-purple">
           <h2 className="col-span-full text-center text-xl md:text-4xl font-bold text-custom-purple mb-8 mt-4">
-            🧵 Další hAnKiEho zÁpiSky...
+            🧵 Další pŘísPĚvky..
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredOtherPosts.slice(0, 4).map((post) => (

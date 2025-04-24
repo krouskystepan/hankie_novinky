@@ -10,7 +10,7 @@ const Posts = async () => {
     <Container className="bg-custom-purple py-10 px-4">
       <h2 className="text-3xl md:text-5xl text-center mb-6 tracking-widest">
         <span className="!font-slackey font-bold bg-gradient-to-br from-custom-green to-custom-green/55 bg-clip-text text-transparent">
-          hAnKIeHO pRIsPEVkY
+          pRIspEvky od H-News
         </span>
         ✨📰🧠
       </h2>
@@ -33,7 +33,7 @@ const Posts = async () => {
               nIC tU nEnÍ 😿💔
             </h3>
             <p className="tracking-widest text-2xl font-bold mt-4 text-custom-red italic">
-              hAnKIe mOžNá zaPOMněL přIDAt nĚJAKý pŘÍspĚVky...
+              H-News mOžNá zaPOMněLi přIDAt nĚJAKý pŘÍspĚVky...
             </p>
           </div>
         )}

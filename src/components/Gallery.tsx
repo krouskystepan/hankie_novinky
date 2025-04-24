@@ -15,7 +15,7 @@ const Gallery = ({ images }: { images: string[] }) => {
         <div className="relative aspect-[4/3] overflow-hidden rounded-xl border-4 border-custom-green max-w-md w-auto lg:w-md xl:w-xl mx-auto">
           <img
             src={validImages[0]}
-            alt="hAnkIE fOtKA"
+            alt="fotka"
             className="size-full object-cover"
           />
         </div>
@@ -30,7 +30,7 @@ const Gallery = ({ images }: { images: string[] }) => {
             >
               <img
                 src={img}
-                alt={`HaNkIe Pic ${i + 1}`}
+                alt={`pic ${i + 1}`}
                 className="size-full object-cover"
               />
             </div>
