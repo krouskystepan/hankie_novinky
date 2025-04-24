@@ -83,6 +83,7 @@ const Convertor = () => {
           value={text}
           placeholder="sEM DeJ tExT"
           onChange={handleTextChange}
+          autoFocus
           className="!text-lg border-2 border-custom-pink shadow-none h-44 resize-none py-1.75"
         />
         <Textarea
