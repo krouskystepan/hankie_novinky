@@ -22,7 +22,6 @@ import {
   FormMessage,
 } from './ui/form'
 import { Button } from './ui/button'
-import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
 type DeleteUserProps = {
@@ -35,16 +34,17 @@ const DeleteUser = ({ users }: DeleteUserProps) => {
   const form = useForm<z.infer<typeof deleteAdminFormSchema>>({
     resolver: zodResolver(deleteAdminFormSchema),
   })
-  const router = useRouter()
 
   async function onSubmit(values: z.infer<typeof deleteAdminFormSchema>) {
-    try {
-      await deleteUser(values)
-      router.push('/admin/manage')
-      toast.success('Kámoš byl úspěšně odebrán.')
-    } catch (error) {
-      console.error('Error deleting user:', error)
-      toast.error('Chyba při odebírání kámoše.')
+    const confirmDelete = window.confirm('ChcEŠ Se fAKT RoZlouČiT?')
+    if (confirmDelete) {
+      try {
+        await deleteUser(values)
+        toast.success('Kámoš byl úspěšně odebrán.')
+      } catch (error) {
+        console.error('Error deleting user:', error)
+        toast.error('Chyba při odebírání kámoše.')
+      }
     }
   }
 
