@@ -65,9 +65,7 @@ const AddUser = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>
-                  Jméno uživatele pro přihlášení.
-                </FormDescription>
+                <FormDescription>Jméno uživatele.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -86,7 +84,7 @@ const AddUser = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Heslo pro přihlášení.</FormDescription>
+                <FormDescription>Heslo.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -97,7 +95,7 @@ const AddUser = () => {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Potvrzení hesla</FormLabel>
+                <FormLabel>Potvrzení hesla.</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Potvrzení hesla"
@@ -105,9 +103,7 @@ const AddUser = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>
-                  Potvrzení hesla pro přihlášení.
-                </FormDescription>
+                <FormDescription>Potvrzení hesla</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
