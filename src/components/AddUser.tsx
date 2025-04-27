@@ -95,7 +95,7 @@ const AddUser = () => {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Potvrzení hesla.</FormLabel>
+                <FormLabel>Potvrzení hesla</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Potvrzení hesla"
@@ -103,7 +103,7 @@ const AddUser = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Potvrzení hesla</FormDescription>
+                <FormDescription>Potvrzení hesla.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
