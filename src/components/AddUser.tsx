@@ -84,7 +84,6 @@ const AddUser = () => {
                     placeholder="Heslo"
                     className="bg-muted border-transparent shadow-none"
                     {...field}
-                    type="password"
                   />
                 </FormControl>
                 <FormDescription>Heslo pro přihlášení.</FormDescription>
@@ -104,7 +103,6 @@ const AddUser = () => {
                     placeholder="Potvrzení hesla"
                     className="bg-muted border-transparent shadow-none"
                     {...field}
-                    type="password"
                   />
                 </FormControl>
                 <FormDescription>
