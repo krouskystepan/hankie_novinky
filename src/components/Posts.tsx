@@ -15,7 +15,7 @@ const Posts = async () => {
         ✨📰🧠
       </h2>
 
-      <div className="grid justify-center grid-flow-row-dense sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid justify-center grid-flow-row-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
           <Post
             key={post.postId}

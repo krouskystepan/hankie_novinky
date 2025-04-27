@@ -4,7 +4,7 @@ import Gallery from '@/components/Gallery'
 import Post from '@/components/Post'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { getStyleByTag, getTagText } from '@/lib/utils'
+import { getStyleByTag, getTagText, isValidUrl } from '@/lib/utils'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -27,6 +27,8 @@ const PostPage = async ({
     (otherPost) => otherPost.postId !== post.postId
   )
 
+  const validImages = post.images.filter(isValidUrl)
+
   return (
     <Container
       className="bg-custom-yellow flex flex-1 py-8"
@@ -35,13 +37,13 @@ const PostPage = async ({
       <main className="spay-ce-y-8">
         <section
           className={`px-6 font-slackey text-custom-purple gap-6 ${
-            post.images.some((img) => img && img.trim() !== '')
+            validImages.some((img) => img && img.trim() !== '')
               ? 'grid grid-cols-1 sm:grid-cols-2'
               : 'flex flex-col items-center justify-center text-center max-w-2xl mx-auto'
           }`}
         >
-          {post.images.some((img) => img && img.trim() !== '') && (
-            <Gallery images={post.images} />
+          {validImages.some((img) => img && img.trim() !== '') && (
+            <Gallery images={validImages} />
           )}
 
           <div className="w-full">
@@ -83,7 +85,7 @@ const PostPage = async ({
           </div>
         </section>
         {post.video && (
-          <div className="max-w-xl mx-auto mb-8 mt-4">
+          <div className="max-w-xl mx-auto mt-4">
             <div className="relative overflow-hidden pt-[56.25%]">
               <iframe
                 className="rounded-xl border-4 border-custom-red absolute inset-0 size-full"
@@ -98,7 +100,7 @@ const PostPage = async ({
         )}
       </main>
       {filteredOtherPosts.length > 0 && (
-        <section className="border-t-2 border-t-custom-purple">
+        <section className="mt-8 border-t-2 border-t-custom-purple">
           <h2 className="col-span-full text-center text-xl md:text-4xl font-bold text-custom-purple mb-8 mt-4">
             🧵 Další pŘísPĚvky..
           </h2>

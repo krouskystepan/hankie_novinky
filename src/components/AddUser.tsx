@@ -25,6 +25,7 @@ const AddUser = () => {
     defaultValues: {
       username: '',
       password: '',
+      confirmPassword: '',
     },
   })
 
@@ -50,7 +51,7 @@ const AddUser = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-4 max-w-2xl mx-auto font-semibold tracking-wider"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           <FormField
             control={form.control}
             name="username"
@@ -83,9 +84,32 @@ const AddUser = () => {
                     placeholder="Heslo"
                     className="bg-muted border-transparent shadow-none"
                     {...field}
+                    type="password"
                   />
                 </FormControl>
                 <FormDescription>Heslo pro přihlášení.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Potvrzení hesla</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Potvrzení hesla"
+                    className="bg-muted border-transparent shadow-none"
+                    {...field}
+                    type="password"
+                  />
+                </FormControl>
+                <FormDescription>
+                  Potvrzení hesla pro přihlášení.
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}

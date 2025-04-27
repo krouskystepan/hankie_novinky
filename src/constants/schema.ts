@@ -10,7 +10,10 @@ export const postFormSchema = z.object({
     .string()
     .min(2, 'Popis článku je příliš krátký')
     .max(400, 'Popis článku je příliš dlouhý'),
-  images: z.array(z.string()).max(3, 'Můžeš zadat maximálně 3 URL obrázků'),
+  images: z
+    .array(z.string())
+    .max(3, 'Můžeš zadat maximálně 3 URL obrázků')
+    .optional(),
   video: z.string().optional(),
   tag: z.enum(TAGS, {
     required_error: 'Vyber tag článku',
@@ -18,13 +21,19 @@ export const postFormSchema = z.object({
   }),
 })
 
-export const adminFormSchema = z.object({
-  username: z
-    .string()
-    .min(2, 'Uživatelské jméno je příliš krátké')
-    .max(10, 'Uživatelské jméno je příliš dlouhé'),
-  password: z.string().min(6, 'Heslo je příliš krátké'),
-})
+export const adminFormSchema = z
+  .object({
+    username: z
+      .string()
+      .min(2, 'Uživatelské jméno je příliš krátké')
+      .max(10, 'Uživatelské jméno je příliš dlouhé'),
+    password: z.string().min(6, 'Heslo je příliš krátké'),
+    confirmPassword: z.string().min(6, 'Heslo je příliš krátké'),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Hesla se neshodují',
+    path: ['confirmPassword'],
+  })
 
 export const deleteAdminFormSchema = z.object({
   username: z.string(),

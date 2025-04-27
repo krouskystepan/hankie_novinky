@@ -27,11 +27,7 @@ const Post = async ({
   const session = await getServerSession(authOptions)
 
   return (
-    <div
-      className={`w-[280px] min-[380px]:w-sm sm:mx-0 md:w-full p-4 rounded-2xl ${getStyleByTag(
-        tag
-      )}`}
-    >
+    <div className={`sm:mx-0 w-full p-4 rounded-2xl ${getStyleByTag(tag)}`}>
       <Card className="relative size-full gap-2">
         <Badge
           className={`absolute -top-4 right-1/2 translate-x-1/2 text-xl text-black px-4 tracking-wider ${getStyleByTag(
