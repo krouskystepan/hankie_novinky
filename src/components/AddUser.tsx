@@ -84,7 +84,7 @@ const AddUser = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Heslo.</FormDescription>
+                <FormDescription>Heslo (min. 6 znaků).</FormDescription>
                 <FormMessage />
               </FormItem>
             )}

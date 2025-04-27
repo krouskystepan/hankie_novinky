@@ -22,10 +22,10 @@ export const adminFormSchema = z
   .object({
     username: z
       .string()
-      .min(2, 'Uživatelské jméno je příliš krátké')
+      .min(2, 'Jméno je příliš krátké')
       .max(10, 'Uživatelské jméno je příliš dlouhé'),
     password: z.string().min(6, 'Heslo je příliš krátké'),
-    confirmPassword: z.string().min(6, 'Heslo je příliš krátké'),
+    confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Hesla se neshodují',
