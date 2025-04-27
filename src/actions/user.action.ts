@@ -66,7 +66,7 @@ export async function createUser({
     })
 
     console.log(`User ${username} created`)
-    revalidatePath('/')
+    revalidatePath('/admin/manage')
   } catch (error) {
     console.error('Error creating user:', error)
     if (error instanceof Error) {
@@ -93,7 +93,7 @@ export async function deleteUser({ username }: { username: string }) {
     await User.deleteOne({ username })
 
     console.log(`User ${username} deleted`)
-    revalidatePath('/')
+    revalidatePath('/admin/manage')
   } catch (error) {
     console.error('Error deleting user:', error)
     if (error instanceof Error) {
