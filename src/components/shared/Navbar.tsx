@@ -8,7 +8,7 @@ import {
   DialogContent,
   DialogTitle,
   DialogTrigger,
-  DialogDescription,
+  DialogDescription
 } from '../ui/dialog'
 
 import Convertor from '../Convertor'
@@ -32,7 +32,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
             className={buttonVariants({
               variant: 'ghost',
               className:
-                'bg-custom-red hover:bg-custom-purple border-2 border-custom-purple font-semibold tracking-wide',
+                'bg-custom-red hover:bg-custom-purple border-2 border-custom-purple font-semibold tracking-wide'
             })}
           >
             tadY neKliKej
@@ -56,7 +56,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
                 <DialogTitle className="tracking-widest">
                   {'Tady nějakou parádu :---)'}
                 </DialogTitle>
-                <DialogDescription></DialogDescription>
+                <DialogDescription />
               </DialogHeader>
 
               <Convertor />

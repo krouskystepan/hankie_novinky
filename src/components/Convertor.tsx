@@ -29,9 +29,9 @@ const Convertor = () => {
   }
 
   return (
-    <div>
-      <div className="mb-3 flex items-center justify-between relative">
-        <p className="text-left text-sm font-semibold tracking-widest">
+    <div className="min-w-0 w-full">
+      <div className="mb-3 flex items-start justify-between gap-2 relative">
+        <p className="min-w-0 flex-1 text-left text-sm font-semibold tracking-widest break-words">
           {'SPeCIal chARs: # $ % & @ < = > ! ? ~ ^ _ |'}
         </p>
 
@@ -77,18 +77,18 @@ const Convertor = () => {
         )}
       </div>
 
-      <div className="space-y-2">
+      <div className="min-w-0 w-full space-y-2">
         <Textarea
           id={id}
           value={text}
           placeholder="sEM DeJ tExT"
           onChange={handleTextChange}
           autoFocus
-          className="!text-lg border-2 border-custom-pink shadow-none h-44 resize-none py-1.75"
+          className="!text-lg border-2 border-custom-pink shadow-none h-44 resize-none py-1.75 break-words"
         />
         <Textarea
           id={id}
-          className="!text-lg bg-muted border-2 border-custom-orange shadow-none h-44 resize-none py-1.75"
+          className="!text-lg bg-muted border-2 border-custom-orange shadow-none h-44 resize-none py-1.75 break-words"
           value={randomizedText}
           readOnly
           placeholder="tADY BUDE tExt"
@@ -96,7 +96,7 @@ const Convertor = () => {
         <Button
           onClick={handleCopy}
           variant={'ghost'}
-          className="border-2 border-custom-green w-full hover:bg-custom-green"
+          className="border-2 border-custom-green w-full whitespace-normal hover:bg-custom-green"
         >
           KopIroVAt teXt
         </Button>
